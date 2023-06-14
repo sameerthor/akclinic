@@ -1,6 +1,17 @@
 import { useState } from "react";
 const Faq = () => {
   const [faqId, setFaqId] = useState(0);
+
+  const toggleAccordion = (id) => {
+    if (faqId === id) {
+      // If the clicked question is already open, close it
+      setFaqId(null);
+    } else {
+      // Otherwise, open the clicked question
+      setFaqId(id);
+    }
+  };
+
   return (
     <div className="faqs">
       <div className="container">
@@ -8,17 +19,17 @@ const Faq = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="faq">
-              <div className="faq_q">
+              <div className="faq_q" onClick={() => toggleAccordion(1)}>
                 <span className="ques_main">
                   Is The Procedure Painless And Safe For All Skin Types?
                 </span>
                 <span
                   className={
-                    faqId == "1" ? "plus_icon minus_icon" : "plus_icon"
+                    faqId === 1 ? "plus_icon minus_icon" : "plus_icon"
                   }
                 ></span>
               </div>
-              {faqId == 1 ? (
+              {faqId === 1 && (
                 <div className="faq_a">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -31,24 +42,22 @@ const Faq = () => {
                   passages, and more recently with desktop publishing software
                   like Aldus PageMaker including versions of Lorem Ipsum.
                 </div>
-              ) : (
-                ""
               )}
             </div>
           </div>
           <div className="col-md-6">
             <div className="faq">
-              <div className="faq_q">
+              <div className="faq_q" onClick={() => toggleAccordion(2)}>
                 <span className="ques_main">
                   Is The Procedure Painless And Safe For All Skin Types?
                 </span>
                 <span
                   className={
-                    faqId == "1" ? "plus_icon minus_icon" : "plus_icon"
+                    faqId === 2 ? "plus_icon minus_icon" : "plus_icon"
                   }
                 ></span>
               </div>
-              {faqId == 1 ? (
+              {faqId === 2 && (
                 <div className="faq_a">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -61,8 +70,6 @@ const Faq = () => {
                   passages, and more recently with desktop publishing software
                   like Aldus PageMaker including versions of Lorem Ipsum.
                 </div>
-              ) : (
-                ""
               )}
             </div>
           </div>
